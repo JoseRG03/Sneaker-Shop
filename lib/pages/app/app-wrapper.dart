@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/components/custom-nav-bar.dart';
+import 'package:untitled/const.dart';
 import 'package:untitled/pages/app/cart-screen.dart';
 import 'package:untitled/pages/app/home-screen.dart';
 
@@ -54,7 +55,7 @@ class _AppWrapperState extends State<AppWrapper> {
             },
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: lightGrey,
       ),
       drawer: Drawer(
         backgroundColor: Colors.black,

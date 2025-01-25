@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/const.dart';
 import 'package:untitled/models/nav-bar-option.dart';
 
 class CustomNavBar extends StatefulWidget {
@@ -67,22 +68,24 @@ class CustomNavBarItem extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: isSelected ? Colors.white : Colors.grey,
+                color: isSelected ? Colors.grey : Colors.white,
               ),
               SizedBox(
-                width: 5,
+                width: isSelected ? 5 : 0,
               ),
-              Text(
-                label,
-                style:
-                    TextStyle(color: isSelected ? Colors.white : Colors.grey),
-              )
+              isSelected
+                  ? Text(
+                      label,
+                      style: TextStyle(
+                          color: isSelected ? Colors.grey : Colors.white),
+                    )
+                  : SizedBox(),
             ],
           ),
         ),
       ),
       decoration: BoxDecoration(
-          color: isSelected ? Colors.grey : Colors.white,
+          color: isSelected ? Colors.white : Colors.transparent,
           borderRadius: BorderRadius.circular(25)),
     );
   }
