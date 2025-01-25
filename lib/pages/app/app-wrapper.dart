@@ -4,10 +4,12 @@ import 'package:untitled/const.dart';
 import 'package:untitled/pages/app/cart-screen.dart';
 import 'package:untitled/pages/app/home-screen.dart';
 
+import '../../models/cart.dart';
 import '../../models/nav-bar-option.dart';
 
 class AppWrapper extends StatefulWidget {
-  AppWrapper({super.key});
+  AppWrapper({super.key, required this.listenableCart});
+  final Cart listenableCart;
 
   @override
   State<AppWrapper> createState() => _AppWrapperState();
@@ -31,15 +33,20 @@ class _AppWrapperState extends State<AppWrapper> {
       ),
     ),
   ];
-  List<Widget> pages = [
-    HomeScreen(),
-    CartScreen(),
-  ];
 
   void handleNavBarChange(int newOption) {
     setState(() {
       selectedOption = newOption;
     });
+  }
+
+  Widget getSelectedOption() {
+    List<Widget> pages = [
+      HomeScreen(listenableCart: widget.listenableCart),
+      CartScreen(listenableCart: widget.listenableCart),
+    ];
+
+    return pages[selectedOption];
   }
 
   @override
@@ -93,7 +100,7 @@ class _AppWrapperState extends State<AppWrapper> {
         ),
       ),
       body: Center(
-        child: pages[selectedOption],
+        child: getSelectedOption(),
       ),
       bottomNavigationBar: CustomNavBar(
         selectedOption: selectedOption,

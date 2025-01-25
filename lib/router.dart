@@ -24,6 +24,6 @@ class _PageWrapperState extends State<PageWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoggedIn ? AppWrapper() : LandingPage(onLogin: handleLogin,);
+    return isLoggedIn ? AppWrapper(listenableCart: widget.cart) : LandingPage(onLogin: handleLogin,);
   }
 }
